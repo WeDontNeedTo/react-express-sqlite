@@ -21,7 +21,9 @@
     "express": "^4.17.1",
     "express-validator": "^6.5.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
+    "shortid": "^2.2.15",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {

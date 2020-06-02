@@ -1,5 +1,6 @@
 {
     "port":5001,
-    "tokenSecret":"my secret string"
+    "tokenSecret":"my secret string",
+    "baseUrl":"http://localhost:5001"
     
 }

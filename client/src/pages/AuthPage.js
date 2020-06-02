@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHttp } from "../hooks/http.hook";
-import {useMessage} from '../hooks/message.hook'
+import { useMessage } from "../hooks/message.hook";
 import { AuthContext } from "../context/auth.context";
 
 export const AuthPage = () => {
-  const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext);
   const message = useMessage();
   const { loading, error, request, clearError } = useHttp();
   const [form, setForm] = useState({
@@ -13,13 +13,13 @@ export const AuthPage = () => {
   });
 
   useEffect(() => {
-    message(error)
-    clearError()
-  }, [error, message, clearError])
+    message(error);
+    clearError();
+  }, [error, message, clearError]);
 
-  useEffect(()=>{
-    window.M.updateTextFields()
-  }, [])
+  useEffect(() => {
+    window.M.updateTextFields();
+  }, []);
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -27,7 +27,7 @@ export const AuthPage = () => {
 
   const registerHandler = async () => {
     try {
-      console.log(form)
+      console.log(form);
       const data = await request("/api/auth/register", "POST", { ...form });
       console.log("Data", data);
     } catch (e) {}
@@ -36,8 +36,8 @@ export const AuthPage = () => {
   const loginHandler = async () => {
     try {
       const data = await request("/api/auth/login", "POST", { ...form });
-      console.log(data)
-      auth.login(data.token, data.userId)
+      console.log(data);
+      auth.login(data.token, data.userId);
     } catch (e) {}
   };
 
@@ -73,6 +73,7 @@ export const AuthPage = () => {
                 id="email"
                 type="email"
                 name="email"
+                value={form.email}
                 className="yellow-input"
                 onChange={changeHandler}
               />
@@ -84,6 +85,7 @@ export const AuthPage = () => {
                 type="password"
                 placeholder="Введите пароль"
                 name="password"
+                value={form.password}
                 className="yellow-input"
                 onChange={changeHandler}
               />
